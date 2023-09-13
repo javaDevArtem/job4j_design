@@ -23,7 +23,7 @@ class BoxTest {
     }
 
     @Test
-    void CheckNumberOfVerticesForTetrahedron() {
+    void checkNumberOfVerticesForTetrahedron() {
         Box box = new Box(4, 4);
         int number = box.getNumberOfVertices();
         assertThat(number).isEqualTo(4)
@@ -33,7 +33,7 @@ class BoxTest {
     }
 
     @Test
-    void CheckNumberOfVerticesForSphere() {
+    void checkNumberOfVerticesForSphere() {
         Box box = new Box(0, 10);
         int number = box.getNumberOfVertices();
         assertThat(number).isEqualTo(0)
@@ -41,21 +41,21 @@ class BoxTest {
     }
 
     @Test
-    void CheckThatExist() {
+    void checkThatExist() {
         Box box = new Box(8, 4);
         boolean exist = box.isExist();
         assertThat(exist).isTrue();
     }
 
     @Test
-    void CheckThatNotExist() {
+    void checkThatNotExist() {
         Box box = new Box(1, 0);
         boolean exist = box.isExist();
         assertThat(exist).isFalse();
     }
 
     @Test
-    void CheckBoxAreaForCube() {
+    void checkBoxAreaForCube() {
         Box box = new Box(8, 4);
         double area = box.getArea();
         assertThat(area).isCloseTo(96d, withPrecision(0.01d))
@@ -63,7 +63,7 @@ class BoxTest {
     }
 
     @Test
-    void CheckBoxAreaForTetrahedron() {
+    void checkBoxAreaForTetrahedron() {
         Box box = new Box(4, 4);
         double area = box.getArea();
         assertThat(area).isCloseTo(27.71d, withPrecision(0.01d))
