@@ -1,8 +1,6 @@
 package ru.job4j.iterator;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class EvenNumbersIterator implements Iterator<Integer> {
 
@@ -15,11 +13,12 @@ public class EvenNumbersIterator implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        return Arrays.stream(data)
-                .boxed()
-                .collect(Collectors.toList()).stream()
-                .skip(index)
-                .anyMatch(this::checkIfEven);
+        for (int i = index; i < data.length; i++) {
+            if (data[i] % 2 == 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
