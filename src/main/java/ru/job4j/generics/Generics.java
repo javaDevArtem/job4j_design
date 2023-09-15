@@ -30,7 +30,7 @@ public class Generics {
     }
 
     public void printObject(List<?> list) {
-        for (Iterator<? extends Object> iterator = list.iterator(); iterator.hasNext();) {
+        for (Iterator<?> iterator = list.iterator(); iterator.hasNext();) {
             Object next = iterator.next();
             System.out.println("Текущий элемент: " + next);
         }
