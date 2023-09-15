@@ -30,21 +30,21 @@ public class Generics {
     }
 
     public void printObject(List<? extends Object> list) {
-        for (Iterator<? extends Object> iterator = list.iterator(); iterator.hasNext(); ) {
+        for (Iterator<? extends Object> iterator = list.iterator(); iterator.hasNext();) {
             Object next = iterator.next();
             System.out.println("Текущий элемент: " + next);
         }
     }
 
     public void printBoundedWildCard(List<? extends Predator> list) {
-        for (Iterator<? extends Animal> iterator = list.iterator(); iterator.hasNext(); ) {
+        for (Iterator<? extends Animal> iterator = list.iterator(); iterator.hasNext();) {
             Object next = iterator.next();
             System.out.println("Текущий элемент: " + next);
         }
     }
 
     public void printLowerBoundedWildCard(List<? super Predator> list) {
-        for (Iterator<? super Tiger> iterator = list.iterator(); iterator.hasNext(); ) {
+        for (Iterator<? super Tiger> iterator = list.iterator(); iterator.hasNext();) {
             Object next = iterator.next();
             System.out.println("Текущий элемент: " + next);
         }
