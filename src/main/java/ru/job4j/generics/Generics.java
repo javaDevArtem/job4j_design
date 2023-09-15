@@ -29,7 +29,7 @@ public class Generics {
         /*     generics.printLowerBoundedWildCard(third);*/
     }
 
-    public void printObject(List<? extends Object> list) {
+    public void printObject(List<?> list) {
         for (Iterator<? extends Object> iterator = list.iterator(); iterator.hasNext();) {
             Object next = iterator.next();
             System.out.println("Текущий элемент: " + next);
