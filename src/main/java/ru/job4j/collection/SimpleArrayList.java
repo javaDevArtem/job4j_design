@@ -3,6 +3,7 @@ package ru.job4j.collection;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class SimpleArrayList<T> implements SimpleList<T> {
 
@@ -33,20 +34,14 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
     @Override
     public T set(int index, T newValue) {
-        if (index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
-        T rem = container[index];
+        T rem = container[Objects.checkIndex(index, this.size)];
         container[index] = newValue;
         return rem;
     }
 
     @Override
     public T remove(int index) {
-        if (index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
-        T rem = container[index];
+        T rem = container[Objects.checkIndex(index, this.size)];
         container[index] = null;
         System.arraycopy(container, index + 1, container, index, size - index - 1);
         size--;
@@ -56,10 +51,7 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
     @Override
     public T get(int index) {
-        if (index >= size) {
-            throw new IndexOutOfBoundsException();
-        }
-        return container[index];
+        return container[Objects.checkIndex(index, this.size)];
     }
 
     @Override
