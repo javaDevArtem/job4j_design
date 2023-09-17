@@ -7,8 +7,8 @@ import java.util.Objects;
 
 public class SimpleLinkedList<E> implements SimpleLinked<E> {
 
-    private int size = 0;
-    private int modCount = 0;
+    private int size;
+    private int modCount;
     private Node<E> head;
 
     @Override
@@ -43,7 +43,7 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
     @Override
     public Iterator<E> iterator() {
         return new Iterator<E>() {
-            int cursor = 0;
+            private Node<E> node = head;
             final int expModCount = modCount;
 
             @Override
@@ -51,23 +51,17 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
                 if (expModCount != modCount) {
                     throw new ConcurrentModificationException();
                 }
-                return cursor < size;
+                return node != null;
             }
 
             @Override
             public E next() {
-                if (expModCount != modCount) {
-                    throw new ConcurrentModificationException();
-                }
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
-                Node<E> curr = head;
-                for (int i = 0; i < cursor; i++) {
-                    curr = curr.next;
-                }
-                cursor++;
-                return curr.item;
+                E value = node.item;
+                node = node.next;
+                return value;
             }
         };
     }
