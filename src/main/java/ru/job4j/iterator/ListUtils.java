@@ -26,7 +26,6 @@ public class ListUtils {
         }
     }
 
-
     public static <T> void replaceIf(List<T> list, Predicate<T> filter, T value) {
         ListIterator<T> iterator = list.listIterator();
         while (iterator.hasNext()) {
