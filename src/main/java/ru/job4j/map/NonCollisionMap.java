@@ -103,9 +103,6 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
 
             @Override
             public K next() {
-                if (expModCount != modCount) {
-                    throw new ConcurrentModificationException();
-                }
                 if (!hasNext()) {
                     throw new NoSuchElementException();
                 }
