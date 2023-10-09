@@ -1,6 +1,7 @@
 package ru.job4j.tree;
 
 import org.junit.jupiter.api.Test;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class SimpleTreeTest {
@@ -40,5 +41,54 @@ public class SimpleTreeTest {
         tree.add(1, 2);
         tree.add(1, 3);
         assertThat(tree.add(1, 2)).isFalse();
+    }
+
+    @Test
+    void whenCheckBinaryThenTrue() {
+        Tree<Integer> tree = new SimpleTree<>(1);
+        tree.add(1, 2);
+        tree.add(1, 3);
+        assertThat(tree.isBinary()).isTrue();
+    }
+
+    @Test
+    void whenCheckBinaryThenFalse() {
+        Tree<Integer> tree = new SimpleTree<>(1);
+        tree.add(1, 2);
+        tree.add(1, 3);
+        tree.add(1, 4);
+        assertThat(tree.isBinary()).isFalse();
+    }
+
+    @Test
+    void whenCheckBinaryWith2ParentsThenTrue() {
+        Tree<Integer> tree = new SimpleTree<>(1);
+        tree.add(1, 2);
+        tree.add(1, 3);
+        tree.add(2, 4);
+        assertThat(tree.isBinary()).isTrue();
+    }
+
+    @Test
+    void whenCheckBinaryWith2ParentsThenFalse() {
+        Tree<Integer> tree = new SimpleTree<>(1);
+        tree.add(1, 2);
+        tree.add(1, 3);
+        tree.add(2, 4);
+        tree.add(2, 5);
+        tree.add(2, 6);
+        assertThat(tree.isBinary()).isFalse();
+    }
+
+    @Test
+    void whenCheckBinaryWith3ParentsThenFalse() {
+        Tree<Integer> tree = new SimpleTree<>(1);
+        tree.add(1, 2);
+        tree.add(1, 3);
+        tree.add(2, 4);
+        tree.add(2, 5);
+        tree.add(3, 7);
+        tree.add(3, 20);
+        assertThat(tree.isBinary()).isTrue();
     }
 }
